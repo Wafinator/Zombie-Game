@@ -1,0 +1,43 @@
+public class Zombie{
+    private double x, y, vel=1.5;
+    private boolean active=true;
+    public Zombie(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(Player p){
+        double ang; //angle from zombie to player
+        if (p.getX()>x) { //if player is on the right
+            ang = Math.atan((p.getY()-y)/(p.getX()-x)); //tan inverse to find angle
+        }
+        else if (p.getX()<x) { //if player is on the left
+            ang = Math.atan((p.getY()-y) / (p.getX()-x)) + Math.PI; //add pi to get actual angle
+        }
+        else { //if player is straight up or down
+            if (p.getY()<y){ //if player is above
+                ang= Math.PI / 2; //zombie faces up
+            }
+            else{ //if player is below
+                ang = 3 * Math.PI / 2; //zombie faces down
+            }
+        }
+        x+=vel*Math.cos(ang); //moving zombie the distance vel
+        y+=vel*Math.sin(ang);
+    }
+
+    public boolean isActive(){
+        return active;
+    }
+
+    public void checkHit(Bullet b){
+        if(Math.abs(b.getX()-x)<20&&Math.abs(b.getY()-y)<20){ //if bullet falls in 40x40px box around zombie
+            active=false; //zombie dies
+            b.hit(); //bullet disappears
+        }
+    }
+
+    public int getX() { return (int) x; }
+
+    public int getY() { return (int) y; }
+}
