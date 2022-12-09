@@ -1,3 +1,9 @@
+/*
+ * Wafi Hassan
+ * Zombie Survival Game
+ * 2020-11-04
+ * */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

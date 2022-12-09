@@ -1,3 +1,9 @@
+/*
+ * Wafi Hassan
+ * Zombie Survival Game
+ * 2020-11-04
+ * */
+
 public class Zombie{
     private double x, y, vel=1.5;//initializing double variables and zombie speed
     private boolean active=true;//boolean variable
